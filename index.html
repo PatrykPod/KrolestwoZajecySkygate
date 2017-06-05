@@ -1,1 +1,87 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <meta>
+    <script src="https://unpkg.com/vue@2.3.3/dist/vue.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <script src="scripts.js"></script>
+    <title>Krolestwo Zajecy Skygate test</title>
+</head>
+
+<body>
+
+    <article class="main">
+        <!--tu bedzie content tabeli po prawej -->
+        <!-- na gorze wyszukiwarka zajecy -->
+        <!-- ponizej tabela: id/lp, imie, ilosc marchewek -->
+        <!-- po clicku na imie- wysuwa sie z boku panel dodawania marchewek z przyciskow -->
+        <!-- może też być zawsze widoczny ale szary, a aktywny po klicku na rekord -->
+        <!-- tabela sortuje sie automatycznie podczas zmiany rekodu -->
+        <!-- tabele mozna sortowac po imieniu i ilosci marchewek na click -->
+        <!-- oddzielenie/odznaczenie kolorem/borderem 10% najlepszych zajecy -->
+        <!-- **na dole ewentualnie jakiś wykres najlepszych słupkowy czy liniowy w czasie -->
+
+        <!-- component template -->
+        <script type="text/x-template" id="grid-template">
+            <table>
+                <thead>
+                    <tr>
+                        <th v-for="key in columns" @click="sortBy(key)" :class="{ active: sortKey == key }">
+                            {{ key | capitalize }}
+                            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="entry in filteredData">
+                        <td v-for="key in columns">
+                            {{entry[key]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
+
+        <!-- demo root element -->
+        <div id="demo">
+            <form id="search">
+                Search <input name="query" v-model="searchQuery">
+            </form>
+            <form id="newProfile">
+                Nowy Zając: <input name="profile" v-model="newProfile">
+            </form>
+            <demo-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery">
+            </demo-grid>
+        </div>
+
+        <nav id="buttonsPanel">
+            <div>
+                <div class="centralise">
+                    <button id="b1">+ 1000</button>
+                    <button id="b2">+ 100</button>
+                    <button id="b2">+ 50</button>
+                    <button id="b2">+ 20</button>
+                    <button id="b2">+ 10</button>
+                    <button id="b2">+ 5</button>
+                    <button id="b2">+ 2</button>
+                    <button id="b2">+ 1</button>
+                    <button id="b2">- 1</button>
+                    <button id="b2">- 2</button>
+                    <button id="b2">- 5</button>
+                    <button id="b2">- 10</button>
+                    <button id="b2">- 20</button>
+                    <button id="b2">- 50</button>
+
+                    <!-- tutej apkowy grid buttonów od +10000 do -10000 /10 a potem o nominały monet -->
+                </div>
+            </div>
+        </nav>
+
+    </article>
+
+
+
+</body>
+
+</html>

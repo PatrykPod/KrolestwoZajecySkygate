@@ -1,0 +1,113 @@
+body {
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.main {
+    width: calc(100% - 25vh);
+    margin: 5vh 5vh;
+    margin-right: 20%;
+    /*transform: skew(10deg);*/
+    border-radius: 6px;
+}
+
+#buttonsPanel:after {
+    content: '';
+    top: 0;
+    right: -10%;
+    width: 35%;
+    height: 100%;
+    position: fixed;
+    background: inherit;
+    transform-origin: left;
+    transform: skew(6deg);
+    border-top: 3px solid green;
+    border-left: 6px solid;
+    border-radius: 3px;
+    -webkit-border-image: url(transparentBord3.png) 13 round;
+    /* Safari 3.1-5 */
+    -o-border-image: url(transparentBord3.png) 13 round;
+    /* Opera 11-12.1 */
+    border-image: url(transparentBord3.png) 13 round;
+    margin-top: 15px;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.centralise {
+    height: calc(100vh - 15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#buttonsPanel {
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: orange;
+    z-index: 1;
+    border-top: 15px solid green;
+}
+
+table {
+    /*border: 2px solid orange;*/
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+th {
+    background-color: #ffd045;
+    color: rgb(0, 64, 3);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+th,
+td {
+    min-width: 120px;
+    padding: 10px 20px;
+}
+
+th.active {
+    color: #fff;
+}
+
+th.active .arrow {
+    opacity: 1;
+}
+
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    opacity: 0.66;
+}
+
+.arrow.asc {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #fff;
+}
+
+.arrow.dsc {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff;
+}
